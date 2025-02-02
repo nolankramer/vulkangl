@@ -2,6 +2,8 @@
 
 #include <GLFW/glfw3.h>
 
+using namespace vulkangl;
+
 // Helper macro for error checking
 #define VK_CHECK(result) \
     if (result != VK_SUCCESS) { \
@@ -52,7 +54,13 @@ void loadOpenGLExtensions() {
     }
 }
 
-void importToOpenGL(GLuint &texture, GLuint &memoryObject, GLuint &glSemaphore, VkDevice device, VkDeviceMemory memory, VkSemaphore semaphore, int width, int height) {
+void importToOpenGL(GLuint &texture,
+                    GLuint &memoryObject,
+                    GLuint &glSemaphore,
+                    VkDevice device,
+                    VkDeviceMemory memory,
+                    VkSemaphore semaphore,
+                    int width, int height) {
     // Obtain file descriptor from Vulkan memory
     int memoryFd;
     VkMemoryGetFdInfoKHR getFdInfo = {};
